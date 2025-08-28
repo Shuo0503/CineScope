@@ -24,9 +24,23 @@ function Home() {
     loadPopularMovies();
   }, []);
 
-  function handleSearch(e) {
+  async function handleSearch(e) {
     e.preventDefault();
-    // movies.filter((movie) =>movie.title.toLowerCase.includes(searchInput) )
+    if (!searchInput.trim()) return;
+    if (loading) return;
+    setLoading(true);
+
+    try {
+      const searchResult = await searchMovies(searchInput);
+      setMovies(searchResult);
+      setError(null);
+    } catch (error) {
+      console.log(error);
+      setError("Failed to load movies...");
+    } finally {
+      setLoading(false);
+    }
+
     setSearchInput("");
   }
 

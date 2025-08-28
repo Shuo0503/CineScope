@@ -4,6 +4,7 @@ const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 async function getPopularMovies() {
     const response = await fetch(`${BASE_URL}/movie/popular?api_key=${apiKey}`)
     const data = await response.json()
+    console.log(data)
     return data.results
 }
 

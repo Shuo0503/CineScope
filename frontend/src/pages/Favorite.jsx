@@ -1,9 +1,11 @@
 
 import "../css/Favorites.css"
 function Favorite() {
-    return <div className="favorites-empty">
+    return (
+      <div className="favorites-empty">
         <h2>No Favorite Movies Yet</h2>
-    </div>
+      </div>
+    );
 }
 
 export default Favorite
